@@ -1,5 +1,5 @@
 """
-WSGI config for sis_backend project.
+WSGI config for sims project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

@@ -1,5 +1,5 @@
 """
-ASGI config for sis_backend project.
+ASGI config for sims project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
