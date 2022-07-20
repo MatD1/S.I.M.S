@@ -1,12 +1,13 @@
 """
 COPYRIGHT NOTICE - SUPERMARKET - INVENTORY MANAGEMENT SYSTEM (SIMS)
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -17,12 +18,16 @@ SECRET_KEY = 'django-insecure-#46!r@a*j*jrv_nyj433%r9-xl=68izc_rs+2x&nro%))iyaj+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost:8000',
+    'alpha-sims.herokuapp.com'
+]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -66,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sis_backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -76,7 +80,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -96,9 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
+# Internationalization - Set to Australia Timezone
 
 LANGUAGE_CODE = 'en-us'
 
@@ -108,8 +109,11 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Thousands Separator
+USE_THOUSAND_SEPARATOR = True
 
-# Static files (CSS, JavaScript, Images)
+
+# Static files (CSS, JavaScript, Images) - Also used for Admin Customization
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
@@ -119,7 +123,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # DJANGO REST FRAMEWORK / Creates a usable & customizable REST _ API
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -128,3 +131,22 @@ REST_FRAMEWORK = {
 
 # DJANGO REST API KEY CUSTOM HEADER
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+
+# DJANGO THEME CUSTOMIZATION
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
+
+# CORS
+CORS_ALLOWED_ORIGINS = [
+    'https://alpha-sims.herokuapp.com',
+    'https://squadkitresearch.net',
+    'http://localhost:3000',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH'
+]
