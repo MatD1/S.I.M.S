@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 class GroceryInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID')
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
@@ -24,7 +24,7 @@ class GroceryInventory(models.Model):
 
 
 class DairyInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID')
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
@@ -43,7 +43,7 @@ class DairyInventory(models.Model):
 
 
 class BakeryInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID')
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
@@ -62,7 +62,7 @@ class BakeryInventory(models.Model):
 
 
 class FreshInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID')
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
