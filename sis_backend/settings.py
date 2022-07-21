@@ -1,5 +1,5 @@
 """
-COPYRIGHT NOTICE - SUPERMARKET - INVENTORY MANAGEMENT SYSTEM (SIMS)
+COPYRIGHT NOTICE - STORE INVENTORY MANAGEMENT SYSTEM (SIMS)
 """
 import os
 from pathlib import Path
@@ -16,12 +16,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 SECRET_KEY = 'django-insecure-#46!r@a*j*jrv_nyj433%r9-xl=68izc_rs+2x&nro%))iyaj+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost:8000',
     '127.0.0.1:8000',
     '127.0.0.1',
+    'localhost',
     'alpha-sims.herokuapp.com'
 ]
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'inventory',
     'sis_api',
     'rest_framework',
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -166,5 +169,21 @@ CORS_ALLOW_METHODS = [
     'PATCH'
 ]
 
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
 # Whitenoise Static Assets in Production
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# MEDIA UPLOADS
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

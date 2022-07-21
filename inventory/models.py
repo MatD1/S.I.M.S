@@ -1,12 +1,16 @@
 import uuid
+
+from django.contrib import admin
 from django.db import models
 
 
 # Create your models here.
 
 class GroceryInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID',
+                                           editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
+    Item_Image = models.ImageField(upload_to='assets/', default='assets/S.I.M.S.png')
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
     Item_Is_On_Sale = models.BooleanField(default=False, verbose_name="Is This Item On Sale?")
@@ -23,9 +27,15 @@ class GroceryInventory(models.Model):
         return self.Item_Name
 
 
+class GroceryInventoryAdmin(admin.ModelAdmin):
+    search_fields = ['id', 'Item_Inventory_UUID', 'Item_Name', 'Item_Price', 'Item_Is_On_Sale', 'Item_Is_New']
+
+
 class DairyInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID',
+                                           editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
+    Item_Image = models.ImageField(upload_to='assets/', default='assets/S.I.M.S.png')
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
     Item_Is_On_Sale = models.BooleanField(default=False, verbose_name="Is This Item On Sale?")
@@ -42,9 +52,15 @@ class DairyInventory(models.Model):
         return self.Item_Name
 
 
+class DairyInventoryAdmin(admin.ModelAdmin):
+    search_fields = ['id', 'Item_Inventory_UUID', 'Item_Name', 'Item_Price', 'Item_Is_On_Sale', 'Item_Is_New']
+
+
 class BakeryInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID',
+                                           editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
+    Item_Image = models.ImageField(upload_to='assets/', default='assets/S.I.M.S.png')
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
     Item_Is_On_Sale = models.BooleanField(default=False, verbose_name="Is This Item On Sale?")
@@ -61,9 +77,15 @@ class BakeryInventory(models.Model):
         return self.Item_Name
 
 
+class BakeryInventoryAdmin(admin.ModelAdmin):
+    search_fields = ['id', 'Item_Inventory_UUID', 'Item_Name', 'Item_Price', 'Item_Is_On_Sale', 'Item_Is_New']
+
+
 class FreshInventory(models.Model):
-    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID', editable=False)
+    Item_Inventory_UUID = models.UUIDField(unique=True, default=uuid.uuid4, verbose_name='Unique Inventory UUID',
+                                           editable=False)
     Item_Name = models.CharField(max_length=100, unique=True, verbose_name="Item Name")
+    Item_Image = models.ImageField(upload_to='assets/', default='assets/S.I.M.S.png')
     Item_SOH = models.IntegerField(default=0, verbose_name="Item Stock On Hand")
     Item_Price = models.FloatField(default=0.00, verbose_name="Item Price")
     Item_Is_On_Sale = models.BooleanField(default=False, verbose_name="Is This Item On Sale?")
@@ -78,3 +100,7 @@ class FreshInventory(models.Model):
 
     def __str__(self):
         return self.Item_Name
+
+
+class FreshInventoryAdmin(admin.ModelAdmin):
+    search_fields = ['id', 'Item_Inventory_UUID', 'Item_Name', 'Item_Price', 'Item_Is_On_Sale', 'Item_Is_New']
