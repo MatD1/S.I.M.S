@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'inventory',
-    'sis_api',
+    'all_inventory',
     'rest_framework',
     "rest_framework_api_key",
     "django_filters",
