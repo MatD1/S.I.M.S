@@ -25,6 +25,7 @@ admin.sites.AdminSite.index_title = 'S.I.M.S Home'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('sis_api.urls')),
+    path("o/", include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]
 
 if settings.DEBUG:

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'oauth2_provider',
     'corsheaders',
     'inventory',
     'all_inventory',
@@ -144,11 +145,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # DJANGO REST FRAMEWORK / Creates a usable & customizable REST _ API
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
 }
 
 # DJANGO REST API KEY CUSTOM HEADER
-API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+API_KEY_CUSTOM_HEADER = "HTTP_X_SIMS_KEY"
 
 # DJANGO THEME CUSTOMIZATION
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -159,6 +163,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://alpha-sims.herokuapp.com',
     'https://squadkitresearch.net',
     'http://localhost:3000',
+    'http://django-oauth-toolkit.herokuapp.com'
 ]
 
 CORS_ALLOW_METHODS = [
@@ -187,3 +192,13 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # MEDIA UPLOADS
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# OAUTH Security
+LOGIN_URL='/admin/login/'
+OAUTH2_PROVIDER = {
+    "PKCE_REQUIRED": False,
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'},
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 259200
+}
+
+ACCESS_TOKEN_EXPIRE_SECONDS=259200
